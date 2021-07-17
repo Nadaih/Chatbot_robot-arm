@@ -1,0 +1,208 @@
+{
+  "intents": [
+    {
+      "intent": "تحكم",
+      "examples": [
+        {
+          "text": "اعطني لمحه موجزه عنه"
+        },
+        {
+          "text": "ماهذا الشيء؟"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "ترحيب",
+      "examples": [
+        {
+          "text": "السلام عليكم"
+        },
+        {
+          "text": "اهلا"
+        },
+        {
+          "text": "هلو"
+        },
+        {
+          "text": "هل يمكنك التحدث ب لغه اخرى؟"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "شكر",
+      "examples": [
+        {
+          "text": "شكرا لك"
+        }
+      ],
+      "description": ""
+    }
+  ],
+  "entities": [
+    {
+      "entity": "sys-date",
+      "values": [],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "sys-number",
+      "values": [],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "sys-time",
+      "values": [],
+      "fuzzy_match": true
+    }
+  ],
+  "metadata": {
+    "api_version": {
+      "major_version": "v2",
+      "minor_version": "2018-11-08"
+    }
+  },
+  "dialog_nodes": [
+    {
+      "type": "standard",
+      "title": "تحكم",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "واجهه تحكم بالذراع"
+              },
+              {
+                "text": "هي واجهه تحكم لذراع الربوت مكونه من 6اعمده."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#تحكم",
+      "dialog_node": "node_10_1626487411875",
+      "previous_sibling": "node_5_1626487733363"
+    },
+    {
+      "type": "standard",
+      "title": "ترحيب",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "..وعليكم السلام "
+              },
+              {
+                "text": "مرحبا, كيف يمكنني مساعدك؟"
+              },
+              {
+                "text": "نعم يمكنني التحدث ب اللغه العربيه و الانجليزيه والفرنسيه."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#ترحيب",
+      "dialog_node": "node_5_1626486436773",
+      "previous_sibling": "node_10_1626487411875"
+    },
+    {
+      "type": "standard",
+      "title": "شكر",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "عفوا.."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#شكر",
+      "dialog_node": "node_5_1626487733363",
+      "previous_sibling": "مرحبا"
+    },
+    {
+      "type": "folder",
+      "title": "chatbot_تحكم بالذراع",
+      "conditions": "",
+      "dialog_node": "node_7_1626488341103"
+    },
+    {
+      "type": "standard",
+      "title": "أي شيء آخر",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "لم أفهم، يمكنك محاولة اعادة الصياغة"
+              },
+              {
+                "text": "هل يمكنك اعادة صياغة عبارتك؟ أنا لا فهم"
+              },
+              {
+                "text": "لم أفهم قصدك"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "anything_else",
+      "dialog_node": "أي شيء آخر",
+      "previous_sibling": "node_5_1626486436773",
+      "disambiguation_opt_out": true
+    },
+    {
+      "type": "standard",
+      "title": "مرحبا",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "مرحبا، كيف يمكنني مساعدتك؟"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "welcome",
+      "dialog_node": "مرحبا",
+      "previous_sibling": "node_7_1626488341103"
+    }
+  ],
+  "counterexamples": [],
+  "system_settings": {
+    "disambiguation": {
+      "prompt": ":هل قصدت",
+      "enabled": true,
+      "randomize": true,
+      "max_suggestions": 5,
+      "suggestion_text_policy": "title",
+      "none_of_the_above_prompt": "كل ما سبق خطأ"
+    },
+    "human_agent_assist": {
+      "prompt": ":هل قصدت"
+    }
+  },
+  "learning_opt_out": false,
+  "name": "التحدث",
+  "language": "ar",
+  "description": ""
+}
